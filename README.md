@@ -27,7 +27,7 @@ Ensure you have the following installed:
 1. **Clone the Repository**  
    Clone the repository to your local machine:
    ```bash
-   git clone https://github.com/yourusername/connect-sphere.git
+   git clone https://github.com/adnan343/Connect-Sphere.git
    ```
 
 2. **Install Required Packages**<br/>
