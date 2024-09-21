@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href=
+"/static/connect_sphere_logo.png"
+          type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .profile-header {
+            position: relative;
+            margin-bottom: 20px;
+            text-align: center;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        .profile-header img.profile-photo {
+            border-radius: 50%;
+            border: 5px solid #fff;
+        }
+        .profile-info {
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        .profile-info h2 {
+            margin-bottom: 10px;
+        }
+        .profile-info p {
+            margin-bottom: 5px;
+        }
+        .profile-posts {
+            margin-top: 20px;
+        }
+        .post {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        .post img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+        .post-actions {
+            margin-top: 10px;
+        }
+        .post-actions button {
+            margin-right: 10px;
+        }
+        .comments {
+            margin-top: 20px;
+        }
+        .comment {
+            margin-bottom: 10px;
+        }
+        .comment p {
+            margin-bottom: 5px;
+        }
+        .comment-form {
+            margin-top: 10px;
+        }
+        .comment-form input {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/hardRefresh">Connect Sphere</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
+                </li>
+                {% if mine == True %}
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/profile">Profile</a>
+                    </li>
+                {% endif %}
+                {% if mine == False %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/profile">Profile</a>
+                    </li>
+                {% endif %}
+                <li class="nav-item">
+                    <a class="nav-link" href="/friends">Friends</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout">Log Out</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <div class="profile-header">
+<!--            {% if profile["gender"] == "male" %}-->
+<!--                <img src="static/maleIcon.jpg" alt="Profile Photo" class="profile-photo" height="150" width="150">-->
+<!--            {% endif %}-->
+<!--            {% if profile["gender"] == "female" %}-->
+<!--                <img src="static/femaleIcon.jpg" alt="Profile Photo" class="profile-photo" height="150" width="150">-->
+<!--            {% endif %}-->
+            <h2>{{profile["name"]}}</h2>
+            <p>{{profile["bio"]}}</p>
+            {% if mine == False %}
+                {% if isFriend == False %}
+                    {% if isRequested == False and isRecieved == False %}
+                    <a href="addnewfriend/{{profile['username']}}">
+                        <button class="btn btn-primary btn-m">Add Friend</button>
+                    </a>
+                    {% endif %}
+                    {% if isRequested == True %}
+                    <a href="/cancelreq/{{profile['username']}}">
+                        <button class="btn btn-primary btn-m">Cancel Request</button>
+                    </a>
+                    {% endif %}
+                    {% if isRecieved == True %}
+                    <a href="/acceptreq/{{profile['username']}}">
+                        <button class="btn btn-primary btn-m">Accept Request</button>
+                    </a>
+                    {% endif %}
+                {% endif %}
+                {% if isFriend == True %}
+                    <a href="/unfriend/{{profile['username']}}">
+                        <button class="btn btn-primary btn-m">Unfriend</button>
+                    </a>
+                {% endif %}
+            {% endif %}
+            {% if mine == True %}
+            <a href="/editProfileInfo">
+                <button class="btn btn-primary btn-m">Edit Profile Info</button>
+            </a>
+            {% endif %}
+        </div>
+        <div class="profile-info">
+            <p><strong>Location:</strong> {{profile["location"]}}</p>
+            <p><strong>Joined:</strong> {{profile["joined"]}}</p>
+        </div>
+        <div class="profile-posts">
+            {% for post in posts %}
+                {% include 'post.html' %}
+           {% endfor %}
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

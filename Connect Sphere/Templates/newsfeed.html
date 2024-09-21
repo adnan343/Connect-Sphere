@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href=
+"/static/connect_sphere_logo.png"
+          type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Newsfeed</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .profile-header {
+            position: relative;
+            margin-bottom: 20px;
+            text-align: center;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        .profile-header img.profile-photo {
+            border-radius: 50%;
+            border: 5px solid #fff;
+        }
+        .profile-info {
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        .profile-info h2 {
+            margin-bottom: 10px;
+        }
+        .profile-info p {
+            margin-bottom: 5px;
+        }
+        .profile-posts {
+            margin-top: 20px;
+        }
+        .post {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        .post img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+        .post-actions {
+            margin-top: 10px;
+        }
+        .post-actions button {
+            margin-right: 10px;
+        }
+        .comments {
+            margin-top: 20px;
+        }
+        .comment {
+            margin-bottom: 10px;
+        }
+        .comment p {
+            margin-bottom: 5px;
+        }
+        .comment-form {
+            margin-top: 10px;
+        }
+        .comment-form input {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/hardRefresh">Connect Sphere</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/profile">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/friends">Friends</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout">Log Out</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <div class="new-post-card">
+            <h5>Create a New Post</h5>
+            <form action="/post_confirmation" method="post">
+                <div class="form-group">
+<!--                    <textarea class="form-control" rows="3" placeholder="What's on your mind?" style="border-radius: 8px;"></textarea>-->
+                    <input type="text" class="form-control" id="text" name="text" placeholder="What's on your mind?">
+                </div>
+                <button class="btn btn-primary">Post</button>
+            </form>
+        </div>
+        <div class="post-card mt-3">
+           {% for post in posts %}
+                {% include 'post.html' %}
+           {% endfor %}
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href=
+"/static/connect_sphere_logo.png"
+          type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Arial', sans-serif;
+        }
+        .navbar {
+            background-color: #f8f9fa;
+            border-bottom: none;
+        }
+        .navbar-brand, .nav-link {
+            color: #343a40 !important;
+        }
+        .content-wrapper {
+            margin-top: 50px;
+            display: flex;
+            justify-content: center;
+        }
+        .edit-profile-form {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+        }
+        .edit-profile-form h2 {
+            font-weight: 700;
+            color: #343a40;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .form-group label {
+            font-weight: 600;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+            border-radius: 20px;
+            padding: 10px 20px;
+            font-weight: 600;
+            color: #ffffff;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href="/hardRefresh">Connect Sphere</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/home">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/profile">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container content-wrapper">
+        <div class="edit-profile-form">
+            <h2>Edit Profile</h2>
+            <form action="/update-profile" method="POST">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" id="username" name="username" value="{{profile['username']}}" required readonly>
+                </div>
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" class="form-control" id="name" name="name" value="{{profile['name']}}" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" value="{{profile['email']}}" required>
+                </div>
+                <div class="form-group">
+                    <label for="location">Location</label>
+                    <input type="text" class="form-control" id="location" name="location" value="{{profile['location']}}" required>
+                </div>
+                <div class="form-group">
+                    <label for="bio">Bio</label>
+                    <textarea class="form-control" id="bio" name="bio" rows="3">{{profile['bio']}}</textarea>
+                </div>
+                <div class="form-group">
+                    <label for="current-password">Current Password</label>
+                    <input type="password" class="form-control" id="current-password" name="current-password" required>
+                    <small class="form-text text-muted">Enter your current password to confirm changes.</small>
+                </div>
+                <div class="form-group">
+                    <label for="password">Change Password</label>
+                    <input type="password" class="form-control" id="password" name="password">
+                    <small class="form-text text-muted">Re-enter the current password if you don't want to change your password.</small>
+                </div>
+                <button type="submit" class="btn btn-primary">Update Profile</button>
+            </form>
+            <br>
+            <a href="/deleteAccount">
+                <button class="btn btn-primary btn-md">Delete Account</button>
+            </a>
+            <br>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

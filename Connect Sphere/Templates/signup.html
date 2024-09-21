@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href=
+"/static/connect_sphere_logo.png"
+          type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <h2 class="text-center mt-5">Sign Up</h2>
+                <form action="/signup_confirmation" method="post">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" class="form-control" id="username" name="username" placeholder="Enter username">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email address</label>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="name" class="form-control" id="name" name="name" placeholder="Enter name">
+                    </div>
+                    <div class="form-group">
+                        <label for="location">Location</label>
+                        <input type="location" class="form-control" id="location" name="location" placeholder="Enter location">
+                    </div>
+                    <div class="form-group">
+                        <label for="bio">Bio</label>
+                        <input type="bio" class="form-control" id="bio" name="bio" placeholder="About you">
+                    </div>
+                    <div class="form-group">
+                        <label for="gender">Gender</label>
+                        <input type="gender" class="form-control" id="gender" name="gender" placeholder="Male/Female">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
+                    <p class="text-center mt-3">
+                        Already have an account? <a href="/">Login</a>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

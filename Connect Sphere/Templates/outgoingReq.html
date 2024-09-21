@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href=
+"/static/connect_sphere_logo.png"
+          type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Friends</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Arial', sans-serif;
+        }
+        .navbar {
+            background-color: #f8f9fa;
+            border-bottom: none;
+        }
+        .navbar-brand, .nav-link {
+            color: #343a40 !important;
+        }
+        .content-wrapper {
+            margin-top: 20px;
+        }
+        .friends-section {
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+        .friends-section h3 {
+            font-weight: 700;
+            color: #343a40;
+            margin-bottom: 20px;
+        }
+        .friend {
+            background-color: #f1f1f1;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s;
+        }
+        .friend:hover {
+            background-color: #e9ecef;
+        }
+        .friend p {
+            font-size: 1rem;
+            color: #555555;
+        }
+        .friend strong {
+            color: #343a40;
+        }
+        .friend .btn {
+            background-color: #007bff;
+            border: none;
+            border-radius: 20px;
+            padding: 5px 15px;
+            color: #ffffff;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        .friend .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/hardRefresh">Connect Sphere</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/home">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/profile">Profile</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/friends">Friends <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout">Log Out</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+
+
+    <div class="container content-wrapper">
+
+        <!-- Friend Suggestions Section -->
+        <div class="friends-section">
+            <h3>Outgoing Requests</h3>
+            {% for profile in profiles %}
+                {% include 'outgoingReqIndv.html' %}
+            {% endfor %}
+        </div>
+    </div>
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
