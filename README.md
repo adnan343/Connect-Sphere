@@ -5,8 +5,8 @@
 ## Features
 - User registration and login system
 - Friend request and connection functionality
-- Ability to create and share posts
-- Commenting on posts
+- Ability to create posts
+- Commenting and Reacting on posts
 - Profile management
 - Integration with MySQL for database management
 
