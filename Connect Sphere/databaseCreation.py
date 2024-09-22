@@ -15,8 +15,6 @@ def initialize_database():
         conn.execute(text(
             'CREATE TABLE Reactions_on_Posts (Post_ID INT, Username_of_Reactor VARCHAR(50), Reaction VARCHAR(50), PRIMARY KEY (Post_ID, Username_of_Reactor), FOREIGN KEY (Post_ID) REFERENCES Posts(Post_ID) on delete cascade , FOREIGN KEY (Username_of_Reactor) REFERENCES User(Username) on delete cascade)'))
         conn.execute(text(
-            'CREATE TABLE Commented_By (Comment_ID INT, Username_of_Commenter VARCHAR(50), PRIMARY KEY (Comment_ID, Username_of_Commenter), FOREIGN KEY (Comment_ID) REFERENCES Comments(Comment_ID) on delete cascade, FOREIGN KEY (Username_of_Commenter) REFERENCES User(Username) on delete cascade)'))
-        conn.execute(text(
             "CREATE TABLE Friendship (User1 VARCHAR(50), User2 VARCHAR(50), Since DATETIME, PRIMARY KEY (User1, User2), FOREIGN KEY (User1) REFERENCES User(Username) on delete cascade , FOREIGN KEY (User2) REFERENCES User(Username) on delete cascade)"))
         conn.commit()
         conn.execute(text(
